@@ -1,0 +1,57 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h5>Editar curso</h5>
+    </div>    
+    <div class="col-sm-12">
+        <div class="card-body">
+            <p>{{ curso.nombre }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="{{ form.codigo.id_for_label }}">Código</label>
+                        <input type="number" class="form-control" name="{{ form.codigo.name }}"  value="{{ form.codigo.value }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.nombre.id_for_label }}">Nombre</label>
+                        <input type="text" class="form-control" name="{{ form.nombre.name }}"  value="{{ form.nombre.value }}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="{{ form.creditos.id_for_label }}">Créditos</label>
+                        <input type="number" class="form-control" name="{{ form.creditos.name }}"  value="{{ form.creditos.value }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.docente.id_for_label }}">Docente</label>
+                        <input type="text" class="form-control" name="{{ form.docente.name }}"  value="{{ form.docente.value }}">
+                    </div>
+                    
+                </div>
+
+                <button class="btn btn-primary">
+                    Actualizar
+                </button>
+            </form>
+            {{ error }}
+         
+            <form action="{% url 'cursos_cer' curso.codigo %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-danger">
+                    Cerrar curso
+                </button>
+            </form>
+        </div>
+    </div>
+
+    </div>
+</div>
+{% endblock %}
+

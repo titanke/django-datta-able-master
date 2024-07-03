@@ -1,0 +1,34 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5>Agregar Carrera</h5>
+    </div>
+    <div class="card-body">
+        <form class="form" action="/carrera/crear/" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="{{ form.codigo.id_for_label }}">Código</label>
+                        <input type="number" class="form-control" name="{{ form.codigo.name }}" placeholder="Ingresa código">
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.nombre.id_for_label }}">Nombre</label>
+                        <input type="text" class="form-control" name="{{ form.nombre.name }}" placeholder="Ingresa nombre">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="{{ form.duracion.id_for_label }}">Duracion</label>
+                        <input type="number" class="form-control" name="{{ form.duracion.name }}" placeholder="Ingresa duracion">
+                    </div>
+                 
+                </div>
+            </div>
+            <button class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+*.pyc
+*.DS_Store
+*.egg*
+/dist/
+/.idea
+/docs/_build/
+/node_modules/
+build/
+venv
+/staticfiles/
+db.sqlite3
+__pycache__
+#src
+*.sqlite*
+
+#.env

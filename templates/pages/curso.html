@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5>Cursos</h5>
+          <a href="{% url 'cursos_crear' %}" class="btn btn-primary">Agregar</a>
+      </div>
+        <ul>
+          <div class="table-responsive">
+
+          <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Créditos</th>
+                    <th>Docente</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de fin</th>
+                    <th>Acciones</th> <!-- Nueva columna -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for cur in cursos %}
+                    <tr>
+                        <td>{{ cur.codigo }}</td>
+                        <td>{{ cur.nombre }}</td>
+                        <td>{{ cur.creditos }}</td>
+                        <td>{{ cur.docente }}</td>
+                        <td>{{ cur.fechaini }}</td>
+                        <td>{{ cur.fechafin }}</td>
+                        <td>
+
+
+                          <a href="{% url 'cursos_det' cur.codigo %}" >
+                                <i class="feather icon-edit"></i>    
+                          </a>
+                          <form action="{% url 'cursos_bor' cur.codigo %}" method="POST" style="display: inline;">
+                              {% csrf_token %}
+                              <button type="submit" class="btn btn-link" style="background: transparent; border: none;">
+                                <i class="feather icon-trash"></i>
+                            </button>
+                          </form>
+                      </td>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+      </div>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock  %}

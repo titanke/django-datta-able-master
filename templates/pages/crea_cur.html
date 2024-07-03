@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5>Crear curso</h5>
+    </div>
+    <div class="card-body">
+        <form class="form" action="/cursos/crear/" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="{{ form.codigo.id_for_label }}">Código</label>
+                        <input type="number" class="form-control" name="{{ form.codigo.name }}" placeholder="Ingresa código">
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.nombre.id_for_label }}">Nombre</label>
+                        <input type="text" class="form-control" name="{{ form.nombre.name }}" placeholder="Ingresa nombre">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="{{ form.creditos.id_for_label }}">Créditos</label>
+                        <input type="number" class="form-control" name="{{ form.creditos.name }}" placeholder="Ingresa créditos">
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.docente.id_for_label }}">Docente</label>
+                        <input type="text" class="form-control" name="{{ form.docente.name }}" placeholder="Ingresa docente">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
